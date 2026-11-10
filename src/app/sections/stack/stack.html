@@ -1,0 +1,54 @@
+<section id="stack" class="section section--alt" aria-labelledby="stack-title">
+  <div class="container">
+    <app-section-heading index="02" eyebrow="Stack" headingId="stack-title">
+      Del pixel <span class="gradient-text">a la base de datos</span>
+      <p lead class="lead">
+        Trabajo en todas las capas de una aplicación web. Así se reparte mi experiencia en un
+        proyecto típico:
+      </p>
+    </app-section-heading>
+
+    <ol class="layers">
+      @for (layer of layers; track layer.layer; let i = $index) {
+        <li class="layer" appReveal [revealDelay]="i * 90">
+          <div class="layer__rail" aria-hidden="true">
+            <span class="layer__dot">{{ i + 1 }}</span>
+          </div>
+          <article class="card layer__card">
+            <div class="layer__top">
+              <span class="icon-badge"><app-icon [name]="layer.icon" /></span>
+              <span class="layer__name">Capa {{ layer.layer }}</span>
+            </div>
+            <h3>{{ layer.title }}</h3>
+            <p>{{ layer.description }}</p>
+            <ul class="chip-list">
+              @for (tech of layer.tech; track tech) {
+                <li class="chip">{{ tech }}</li>
+              }
+            </ul>
+          </article>
+        </li>
+      }
+    </ol>
+
+    <h3 class="subhead toolbox-title" appReveal>Caja de herramientas</h3>
+    <div class="toolbox">
+      @for (group of groups(); track group.title; let i = $index) {
+        <article class="card group" appReveal [revealDelay]="(i % 3) * 70">
+          <header class="group__head">
+            <app-icon [name]="group.icon" />
+            <h4>{{ group.title }}</h4>
+          </header>
+          @if (group.items.length) {
+            <ul class="chip-list">
+              @for (item of group.items; track item) {
+                <li class="chip">{{ item }}</li>
+              }
+            </ul>
+          }
+          <app-pending [hint]="group.pending" />
+        </article>
+      }
+    </div>
+  </div>
+</section>

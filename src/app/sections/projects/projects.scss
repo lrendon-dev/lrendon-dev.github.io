@@ -1,0 +1,240 @@
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.meta__badge {
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: var(--grad-strong);
+  color: #fff;
+  font-weight: 500;
+}
+
+.summary {
+  margin-top: 0.75rem;
+  color: var(--text-soft);
+}
+
+.role {
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+
+  span {
+    margin-right: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+}
+
+/* Proyecto destacado */
+.featured {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--grad);
+  }
+
+  @media (min-width: 960px) {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    align-items: center;
+  }
+}
+
+.featured__title {
+  margin-top: 0.85rem;
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+}
+
+.bullets {
+  --icon-size: 1rem;
+  display: grid;
+  gap: 0.55rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+
+  li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  app-icon {
+    margin-top: 0.22rem;
+    color: var(--success);
+  }
+}
+
+/* Diagrama de arquitectura */
+.arch {
+  margin: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(20rem 12rem at 100% 0%, var(--glow-2), transparent 70%), var(--surface-2);
+}
+
+.arch__caption {
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.arch__nodes {
+  display: grid;
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.arch__node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+
+  strong,
+  small {
+    display: block;
+  }
+
+  strong {
+    font-size: 0.95rem;
+  }
+
+  small {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  // Conector vertical con flecha
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(0.9rem + 21px);
+    bottom: -1.6rem;
+    width: 2px;
+    height: 1.6rem;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+    opacity: 0.7;
+  }
+}
+
+.arch__note {
+  --icon-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--text-soft);
+  font-size: 0.82rem;
+
+  app-icon {
+    color: var(--accent-2);
+  }
+}
+
+/* Resto de proyectos */
+.grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @media (min-width: 680px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1040px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+}
+
+.project__title {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.project .summary {
+  font-size: 0.93rem;
+}
+
+.sectors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    font-size: 0.82rem;
+    color: var(--text-soft);
+  }
+}
+
+.project__tech {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.links {
+  --icon-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--accent);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

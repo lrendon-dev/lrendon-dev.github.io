@@ -1,0 +1,104 @@
+<section id="proyectos" class="section section--alt" aria-labelledby="projects-title">
+  <div class="container">
+    <app-section-heading index="04" eyebrow="Proyectos" headingId="projects-title">
+      Lo que he <span class="gradient-text">construido</span>
+      <p lead class="lead">
+        Muchos de mis sistemas son internos, así que aquí cuento el problema, mi papel y la
+        arquitectura detrás de cada uno.
+      </p>
+    </app-section-heading>
+
+    @for (project of featured; track project.name) {
+      <article class="card featured" appReveal>
+        <div class="featured__body">
+          <p class="meta">
+            <span class="meta__badge">Destacado</span>
+            {{ project.context }}
+            @if (project.year) {
+              <span aria-hidden="true">·</span> {{ project.year }}
+            }
+          </p>
+          <h3 class="featured__title">{{ project.name }}</h3>
+          <p class="summary">{{ project.summary }}</p>
+          <p class="role"><span>Rol</span> {{ project.role }}</p>
+          <ul class="bullets">
+            @for (item of project.highlights ?? []; track $index) {
+              <li>
+                <app-icon name="check" [stroke]="2.25" /><span>{{ item }}</span>
+              </li>
+            }
+          </ul>
+          <ul class="chip-list" aria-label="Tecnologías">
+            @for (tech of project.tech; track tech) {
+              <li class="chip">{{ tech }}</li>
+            }
+          </ul>
+          <app-pending [hint]="project.pending" />
+        </div>
+
+        @if (project.architecture) {
+          <figure class="arch" aria-label="Arquitectura de la solución">
+            <figcaption class="arch__caption">Arquitectura</figcaption>
+            <ol class="arch__nodes">
+              @for (node of project.architecture; track node.title) {
+                <li class="arch__node">
+                  <span class="icon-badge"><app-icon [name]="node.icon" /></span>
+                  <span>
+                    <strong>{{ node.title }}</strong>
+                    <small>{{ node.caption }}</small>
+                  </span>
+                </li>
+              }
+            </ol>
+            @if (project.architectureNote) {
+              <p class="arch__note"><app-icon name="refresh" /> {{ project.architectureNote }}</p>
+            }
+          </figure>
+        }
+      </article>
+    }
+
+    <div class="grid">
+      @for (project of others; track project.name; let i = $index) {
+        <article class="card card--hover project" appReveal [revealDelay]="(i % 3) * 70">
+          <p class="meta">
+            {{ project.context }}
+            @if (project.year) {
+              <span aria-hidden="true">·</span> {{ project.year }}
+            }
+          </p>
+          <h3 class="project__title">{{ project.name }}</h3>
+          <p class="summary">{{ project.summary }}</p>
+          <p class="role"><span>Rol</span> {{ project.role }}</p>
+
+          @if (project.sectors?.length) {
+            <ul class="sectors" aria-label="Sectores">
+              @for (sector of project.sectors; track sector) {
+                <li>{{ sector }}</li>
+              }
+            </ul>
+          }
+
+          @if (project.tech.length) {
+            <ul class="chip-list project__tech" aria-label="Tecnologías">
+              @for (tech of project.tech; track tech) {
+                <li class="chip">{{ tech }}</li>
+              }
+            </ul>
+          }
+
+          @if (project.links?.length) {
+            <div class="links">
+              @for (link of project.links; track link.href) {
+                <a [href]="link.href" target="_blank" rel="noopener">
+                  {{ link.label }} <app-icon name="external" />
+                </a>
+              }
+            </div>
+          }
+          <app-pending [hint]="project.pending" />
+        </article>
+      }
+    </div>
+  </div>
+</section>

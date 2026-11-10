@@ -1,0 +1,59 @@
+<header
+  class="header"
+  [class.header--scrolled]="scrolled() || menuOpen()"
+  [class.header--open]="menuOpen()"
+>
+  <div class="container header__inner">
+    <a class="brand" href="#inicio" (click)="go($event, 'inicio')" aria-label="Ir al inicio">
+      <span class="brand__mark" aria-hidden="true">{{ profile.initials }}</span>
+      <span class="brand__name">{{ profile.displayName }}</span>
+    </a>
+
+    <nav class="nav" id="menu-principal" aria-label="Secciones">
+      <ul class="nav__list">
+        @for (item of nav; track item.id) {
+          <li>
+            <a
+              class="nav__link"
+              [class.is-active]="spy.active() === item.id"
+              [attr.aria-current]="spy.active() === item.id ? 'location' : null"
+              [href]="'#' + item.id"
+              (click)="go($event, item.id)"
+              >{{ item.label }}</a
+            >
+          </li>
+        }
+      </ul>
+      <a class="btn btn--primary nav__cv" [href]="profile.cv.href" download>
+        <app-icon name="download" /> Descargar CV
+      </a>
+    </nav>
+
+    <div class="header__actions">
+      <button
+        type="button"
+        class="icon-btn"
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.isDark() ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+        [attr.title]="theme.isDark() ? 'Tema claro' : 'Tema oscuro'"
+      >
+        <app-icon [name]="theme.isDark() ? 'sun' : 'moon'" />
+      </button>
+
+      <a class="btn btn--primary btn--sm header__cv" [href]="profile.cv.href" download>
+        <app-icon name="download" /> CV
+      </a>
+
+      <button
+        type="button"
+        class="icon-btn header__menu"
+        (click)="menuOpen.set(!menuOpen())"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="menu-principal"
+        [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      >
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
+      </button>
+    </div>
+  </div>
+</header>

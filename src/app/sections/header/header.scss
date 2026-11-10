@@ -1,0 +1,154 @@
+:host {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  display: block;
+}
+
+.header {
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.header--scrolled {
+  background: var(--header-bg);
+  border-bottom-color: var(--border);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-right: auto;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: var(--grad-strong);
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 22px -10px rgba(124, 58, 237, 0.7);
+}
+
+.brand__name {
+  font-size: 1.02rem;
+}
+
+.nav__list {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  position: relative;
+  display: block;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    color: var(--text);
+  }
+
+  &.is-active {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+}
+
+.nav__cv {
+  display: none;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header__menu {
+  display: none;
+}
+
+/* Menú móvil */
+@media (max-width: 899.98px) {
+  .header__menu {
+    display: inline-grid;
+  }
+
+  .nav {
+    position: absolute;
+    inset: var(--header-h) 0 auto;
+    display: grid;
+    gap: 1rem;
+    padding: 1rem 1rem 1.5rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s var(--ease),
+      visibility 0.2s;
+  }
+
+  .header--open .nav {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .nav__link {
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+  }
+
+  .nav__cv {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .header__cv,
+  .brand__name {
+    display: none;
+  }
+}

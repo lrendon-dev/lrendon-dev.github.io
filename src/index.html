@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Luis Rendón · Desarrollador Full Stack (Angular & .NET)</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portafolio de Luis Fernando Rendón Medina, desarrollador full stack con más de 4 años de experiencia en Angular, C#, ASP.NET Core y SQL Server. Hermosillo, Sonora · Disponible para trabajo remoto."
+    />
+    <meta name="author" content="Luis Fernando Rendón Medina" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f6f9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0c11" media="(prefers-color-scheme: dark)" />
+
+    <!--
+      El marcador de URL del sitio se reemplaza automáticamente en el despliegue
+      (GitHub Actions) por la URL pública. En local se queda tal cual y no afecta.
+    -->
+    <link rel="canonical" href="__SITE_URL__/" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:url" content="__SITE_URL__/" />
+    <meta property="og:title" content="Luis Rendón · Desarrollador Full Stack" />
+    <meta
+      property="og:description"
+      content="Angular, ASP.NET Core, C# y SQL Server. Sistemas web completos, de la interfaz a la base de datos."
+    />
+    <meta property="og:image" content="__SITE_URL__/img/luis-rendon.jpg" />
+    <meta property="profile:first_name" content="Luis Fernando" />
+    <meta property="profile:last_name" content="Rendón Medina" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Luis Fernando Rendón Medina",
+        "jobTitle": "Desarrollador Full Stack",
+        "url": "__SITE_URL__/",
+        "image": "__SITE_URL__/img/luis-rendon.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hermosillo",
+          "addressRegion": "Sonora",
+          "addressCountry": "MX"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidad Tecnológica de Hermosillo"
+        },
+        "knowsAbout": [
+          "Angular",
+          "TypeScript",
+          "C#",
+          ".NET",
+          "ASP.NET Core",
+          "Entity Framework Core",
+          "SQL Server",
+          "Azure DevOps"
+        ]
+      }
+    </script>
+
+    <!-- Aplica el tema guardado antes del primer pintado (evita el destello claro/oscuro). -->
+    <script>
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        Luis Fernando Rendón Medina — Desarrollador Full Stack (Angular, C#, ASP.NET Core, SQL
+        Server). Activa JavaScript para ver el portafolio completo.
+      </p>
+    </noscript>
+  </body>
+</html>

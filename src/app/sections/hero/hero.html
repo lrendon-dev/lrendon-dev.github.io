@@ -1,0 +1,74 @@
+<section id="inicio" class="hero" aria-labelledby="hero-title">
+  <div class="hero__backdrop" aria-hidden="true"></div>
+
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="status" appReveal>
+        <span class="status__dot" aria-hidden="true"></span>
+        {{ profile.availability }}
+      </p>
+
+      <h1 id="hero-title" class="hero__title" appReveal [revealDelay]="60">
+        <span class="hero__hello">Hola, soy</span>
+        {{ profile.displayName }}
+      </h1>
+
+      <p class="hero__role" appReveal [revealDelay]="120">
+        <span class="gradient-text">{{ profile.role }}</span>
+        <span class="hero__stackline">{{ profile.stackLine }}</span>
+      </p>
+
+      <p class="hero__tagline" appReveal [revealDelay]="180">{{ profile.tagline }}</p>
+
+      <div class="hero__actions" appReveal [revealDelay]="240">
+        <a class="btn btn--primary" href="#proyectos" (click)="go($event, 'proyectos')">
+          Ver proyectos <app-icon name="arrow-right" />
+        </a>
+        <a class="btn btn--ghost" [href]="profile.cv.href" download>
+          <app-icon name="download" /> Descargar CV
+        </a>
+      </div>
+
+      <ul class="hero__meta" appReveal [revealDelay]="300">
+        <li><app-icon name="map-pin" /> {{ profile.location }}</li>
+        <li><app-icon name="globe" /> {{ profile.remote }}</li>
+      </ul>
+      <app-pending [hint]="profile.cv.pending" />
+    </div>
+
+    <div class="hero__visual" appReveal [revealDelay]="160">
+      <div class="portrait">
+        <img [ngSrc]="profile.photo.src" [alt]="profile.photo.alt" fill priority />
+      </div>
+
+      <div class="code-card" aria-hidden="true">
+        <div class="code-card__bar">
+          <span></span><span></span><span></span>
+          <em>luis.ts</em>
+        </div>
+        <pre><code><span class="k">const</span> <span class="v">luis</span> = &#123;
+  rol: <span class="s">'Full Stack'</span>,
+  front: [<span class="s">'Angular'</span>, <span class="s">'TypeScript'</span>],
+  back: [<span class="s">'C#'</span>, <span class="s">'ASP.NET Core'</span>],
+  datos: [<span class="s">'SQL Server'</span>],
+  remoto: <span class="k">true</span>,
+&#125;;</code></pre>
+      </div>
+
+      <span class="float-chip float-chip--a" aria-hidden="true">&lt;Angular /&gt;</span>
+      <span class="float-chip float-chip--b" aria-hidden="true">.NET 8</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <ul class="stats" appReveal [revealDelay]="360">
+      @for (stat of stats; track stat.value) {
+        <li class="stat">
+          <span class="stat__value">{{ stat.value }}</span>
+          <span class="stat__label">{{ stat.label }}</span>
+        </li>
+      }
+    </ul>
+    <app-pending [hint]="statsPending" />
+  </div>
+</section>
